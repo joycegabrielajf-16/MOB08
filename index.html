@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido Integrado (GPS + WhatsApp)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8fafc; color: #1e293b; padding: 16px; }
+.card-app {
+    max-width: 440px; margin: 20px auto;
+    background: white; padding: 24px;
+    border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.card-app h2 { color: #7c3aed; margin-bottom: 6px; text-align: center; }
+.card-app > p { color: #64748b; font-size: 0.9rem; margin-bottom: 16px; text-align: center; }
+
+.card-app label {
+    display: block; font-size: 0.82rem;
+    font-weight: 700; color: #334155;
+    margin: 12px 0 4px;
+}
+.card-app input, .card-app textarea {
+    width: 100%; padding: 12px 14px;
+    border: 2px solid #e2e8f0; border-radius: 10px;
+    font-size: 0.9rem; font-family: inherit;
+    resize: vertical;
+}
+.card-app input:focus, .card-app textarea:focus {
+    outline: none; border-color: #a855f7;
+}
+
+.btn-local {
+    width: 100%; padding: 13px; margin-top: 14px;
+    background: #7c3aed; color: white;
+    border: none; border-radius: 10px;
+    font-weight: 700; cursor: pointer;
+    font-family: inherit; font-size: 0.9rem;
+}
+
+.local-app {
+    margin: 12px 0; padding: 12px;
+    background: #f8fafc; border-radius: 10px;
+    border: 2px dashed #cbd5e1;
+    font-size: 0.85rem; color: #334155;
+    text-align: left; min-height: 50px;
+    display: flex; flex-direction: column; justify-content: center;
+}
+.local-app .linha { padding: 2px 0; }
+.local-app strong { color: #7c3aed; }
+.vazio { color: #94a3b8; font-style: italic; text-align: center; }
+
+.btn-enviar {
+    width: 100%; padding: 14px; margin-top: 8px;
+    background: #25D366; color: white;
+    border: none; border-radius: 12px;
+    font-weight: 800; cursor: pointer;
+    font-family: inherit; font-size: 1rem;
+    box-shadow: 0 8px 20px rgba(37,211,102,0.35);
+}
+.btn-enviar:active { transform: scale(0.97); }
+
+.btn-compartilhar {
+    width: 100%; padding: 13px; margin-top: 8px;
+    background: #1e293b; color: white;
+    border: none; border-radius: 12px;
+    font-weight: 700; cursor: pointer;
+    font-family: inherit; font-size: 0.9rem;
+}
+
+.resultado-app {
+    margin-top: 12px; padding: 12px;
+    background: #f5f3ff; border-radius: 10px;
+    border: 1px solid #ddd6fe;
+    font-size: 0.82rem; color: #5b21b6;
+    min-height: 40px; line-height: 1.5;
+    word-break: break-word;
+}
+</style>
+</head>
+<body>
+<div class="card-app">
+    <h2>🚀 Pedido com Localização</h2>
+    <p>Preencha, capture o GPS e envie por WhatsApp.</p>
+
+    <label>👤 Seu nome</label>
+    <input type="text" id="appNome" value="" placeholder="Digite seu nome">
+
+    <label>📝 O que você precisa?</label>
+    <textarea id="appPedido" rows="3" placeholder="Descreva seu pedido..."></textarea>
+
+    <label>📞 WhatsApp do destino</label>
+    <input type="tel" id="appZap" value="" placeholder="" inputmode="numeric">
+
+    <button class="btn-local" onclick="capturarGpsApp()">📍 Capturar Minha Localização</button>
+
+    <div class="local-app" id="appGps">
+        <span class="vazio">Localização não capturada</span>
+    </div>
+
+    <button class="btn-enviar" onclick="enviarPedidoZap()">💬 Enviar Pedido por WhatsApp</button>
+    <button class="btn-compartilhar" onclick="compartilharPedido()">📤 Compartilhar Pedido</button>
+
+    <div class="resultado-app" id="resultadoApp">
+        <span class="vazio">Aguardando ação</span>
+    </div>
+</div>
+<script>
+let gpsApp = null;
+
+function capturarGpsApp() {
+    const res = document.getElementById("appGps");
+
+    if (!navigator.geolocation) {
+        res.innerHTML = '<span style="color:#ef4444;">❌ GPS não suportado</span>';
+        return;
+    }
+
+    res.innerHTML = '<span class="vazio">⏳ Obtendo localização...</span>';
+
+    navigator.geolocation.getCurrentPosition(
+        function(pos) {
+            gpsApp = {
+                lat: pos.coords.latitude.toFixed(6),
+                lon: pos.coords.longitude.toFixed(6)
+            };
+            res.innerHTML =
+                '<div class="linha" style="color:#10b981;"><strong>✅ Localização capturada</strong></div>' +
+                '<div class="linha"><strong>Lat:</strong> ' + gpsApp.lat + '</div>' +
+                '<div class="linha"><strong>Lon:</strong> ' + gpsApp.lon + '</div>';
+        },
+        function() {
+            res.innerHTML = '<span style="color:#ef4444;">❌ Não foi possível obter GPS</span>';
+        },
+        { enableHighAccuracy: true, timeout: 12000 }
+    );
+}
+
+function montarMensagem() {
+    const nome = document.getElementById("appNome").value.trim() || "Cliente";
+    const pedido = document.getElementById("appPedido").value.trim() || "Sem descrição";
+    let msg = "Olá! Meu nome é " + nome + ".\nPedido: " + pedido;
+    if (gpsApp) {
+        msg += "\nLocalização: https://www.google.com/maps?q=" + gpsApp.lat + "," + gpsApp.lon;
+    }
+    return msg;
+}
+
+function enviarPedidoZap() {
+    const numero = document.getElementById("appZap").value.replace(/\D/g, "");
+    const res = document.getElementById("resultadoApp");
+
+    if (!numero) {
+        alert("Digite o WhatsApp de destino.");
+        return;
+    }
+
+    const msg = montarMensagem();
+    const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
+
+    res.innerHTML = "✅ <strong>Link gerado:</strong><br>" + url;
+
+    window.open(url, "_blank");
+}
+
+function compartilharPedido() {
+    const res = document.getElementById("resultadoApp");
+
+    if (!navigator.share) {
+        res.innerHTML = '<span style="color:#f59e0b;">⚠️ Compartilhamento não suportado</span>';
+        return;
+    }
+
+    navigator.share({
+        title: "Meu Pedido",
+        text: montarMensagem()
+    })
+    .then(() => {
+        res.innerHTML = '<span style="color:#10b981;">✅ Pedido compartilhado!</span>';
+    })
+    .catch(() => {});
+}
+</script>
+</body>
+</html>

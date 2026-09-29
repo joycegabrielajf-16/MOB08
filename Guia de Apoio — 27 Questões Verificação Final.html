@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://almeida-cma.github.io/mob08/apoio_ead.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Apoio — 27 Questões Verificação Final</title>
+<style>
+  :root{
+    --bg:#0b1220;
+    --card:#1e293b;
+    --card2:#273449;
+    --text:#e2e8f0;
+    --muted:#94a3b8;
+    --accent:#a855f7;
+    --accent2:#ec4899;
+    --accent3:#22c55e;
+    --warn:#f59e0b;
+    --danger:#ef4444;
+    --border:#334155;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',Roboto,Arial,sans-serif;
+    background:linear-gradient(180deg,#0b1220,#0f172a 40%);
+    color:var(--text);line-height:1.65;
+  }
+  header{
+    padding:32px 20px 22px;text-align:center;
+    background:radial-gradient(circle at top, rgba(168,85,247,.22), transparent 60%);
+    border-bottom:1px solid var(--border);
+  }
+  header h1{
+    margin:0 0 8px;font-size:1.8rem;
+    background:linear-gradient(135deg,#a855f7,#ec4899);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  header p{
+    margin:0;color:var(--muted);max-width:820px;
+    margin-inline:auto;font-size:.94rem;
+  }
+  nav{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    gap:6px;padding:14px;background:#0b1220;
+    border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:10;
+  }
+  nav button{
+    background:var(--card);color:var(--text);
+    border:1px solid var(--border);
+    padding:8px 13px;border-radius:8px;
+    cursor:pointer;font-size:.83rem;
+    transition:.2s;font-family:inherit;
+  }
+  nav button:hover{background:var(--card2);}
+  nav button.active{
+    background:linear-gradient(135deg,#a855f7,#ec4899);
+    color:#fff;font-weight:bold;border-color:transparent;
+  }
+  main{max-width:1000px;margin:0 auto;padding:26px 20px 90px;}
+  section{display:none;animation:fade .3s ease;}
+  section.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  h2{
+    color:var(--accent);
+    border-left:4px solid var(--accent);
+    padding-left:12px;margin:0 0 14px;
+    font-size:1.3rem;
+  }
+  h3{
+    color:var(--accent2);margin:22px 0 10px;font-size:1.08rem;
+  }
+  h4{color:var(--warn);margin-bottom:6px;font-size:.98rem;}
+  p,li{color:var(--text);font-size:.93rem;}
+  .card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;padding:18px 20px;margin:16px 0;
+  }
+  .box{
+    background:var(--card2);
+    border-left:4px solid var(--accent);
+    padding:12px 16px;border-radius:8px;margin:12px 0;
+  }
+  .box.exemplo{border-left-color:var(--accent3);}
+  .box.atencao{border-left-color:var(--danger);}
+  .box.figma{border-left-color:#a855f7;}
+  .box.front{border-left-color:#06b6d4;}
+  .box.questao{border-left-color:var(--warn);background:#2a2415;}
+  ul,ol{margin:8px 0 8px 22px;}
+  table{
+    width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem;
+  }
+  th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;}
+  th{background:#0b1220;color:var(--accent);}
+  code{
+    background:#0b1220;color:#fbbf24;
+    padding:2px 6px;border-radius:4px;
+    font-family:'Courier New',monospace;font-size:.85rem;
+  }
+  .tag{
+    display:inline-block;background:var(--accent);
+    color:#0b1220;font-size:.72rem;font-weight:bold;
+    padding:2px 8px;border-radius:999px;margin-right:6px;
+  }
+  .questao{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;padding:16px 18px;margin:14px 0;
+  }
+  .questao p.enunciado{font-weight:600;margin:0 0 10px;}
+  .alternativas label{
+    display:block;background:var(--card2);
+    border:1px solid var(--border);border-radius:8px;
+    padding:8px 12px;margin:6px 0;
+    cursor:pointer;transition:.15s;font-size:.9rem;
+  }
+  .alternativas label:hover{background:#31415c;}
+  .alternativas input{margin-right:8px;}
+  .resultado{margin-top:8px;font-weight:bold;font-size:.88rem;}
+  .ok{color:var(--accent3);}
+  .erro{color:var(--danger);}
+  .btn{
+    display:inline-block;
+    background:linear-gradient(135deg,#a855f7,#ec4899);
+    color:#fff;border:none;padding:11px 20px;
+    border-radius:8px;font-weight:bold;
+    cursor:pointer;margin:8px 6px 8px 0;
+    transition:.2s;font-family:inherit;font-size:.92rem;
+  }
+  .btn:hover{filter:brightness(1.1);transform:translateY(-1px);}
+  .btn.green{background:linear-gradient(135deg,#22c55e,#16a34a);}
+  .btn.warn{background:linear-gradient(135deg,#f59e0b,#d97706);}
+  .gabarito{
+    display:none;background:#0b1220;
+    border:1px dashed var(--accent);
+    border-radius:12px;padding:16px 20px;margin-top:20px;
+  }
+  .gabarito.show{display:block;}
+  .gabarito li{margin:6px 0;font-size:.88rem;}
+  .gabarito .explica{
+    color:var(--muted);font-size:.82rem;
+    margin-left:16px;font-style:italic;
+  }
+  footer{
+    text-align:center;padding:24px;
+    color:var(--muted);font-size:.82rem;
+    border-top:1px solid var(--border);
+  }
+  .progresso{
+    text-align:center;color:var(--muted);
+    font-size:.88rem;margin:8px 0 16px;
+  }
+  .mapa{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:10px;margin:14px 0;
+  }
+  .mapa .item{
+    background:var(--card2);border-radius:10px;
+    padding:12px;border-left:4px solid var(--accent);
+    font-size:.85rem;
+  }
+  .mapa .item strong{color:var(--accent);}
+  .mapa .item em{color:#cbd5e1;font-style:normal;}
+  .mapa .item .letra{
+    display:inline-block;background:var(--accent3);
+    color:#0b1220;font-weight:bold;
+    padding:1px 7px;border-radius:6px;
+    font-size:.72rem;margin-left:4px;
+  }
+  @media (max-width:700px){
+    header h1{font-size:1.4rem;}
+    .mapa{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Guia de Apoio — 27 Questões Verificação Final</h1>
+  <p>Material conceitual alinhado <strong>1:1 com as 27 questões</strong> do questionário final. Cada bloco cobre exatamente os conceitos necessários para responder as questões correspondentes.</p>
+</header>
+
+<nav id="menu">
+  <button class="" data-tab="b1">Bloco 1 · Q1 a Q9</button>
+  <button data-tab="b2" class="">Bloco 2 · Q10 a Q18</button>
+  <button data-tab="b3">Bloco 3 · Q19 a Q23</button>
+  <button data-tab="b4">Bloco 4 · Q24 a Q27</button>
+  <button data-tab="mapa" class="">🗺️ Mapa das Questões</button>
+  <button data-tab="questoes" class="active">📝 Questionário</button>
+</nav>
+
+<main>
+
+<!-- ============================================================
+     BLOCO 1 — Q1 a Q9
+     ============================================================ -->
+<section id="b1" class="">
+  <h2>Bloco 1 — Fundamentos, Planejamento e Ensino (Q1 a Q9)</h2>
+
+  <div class="box">
+    <h4>🎯 Ideia central deste bloco</h4>
+    <p>Toda questão deste bloco segue o mesmo padrão: <strong>antes de codar, planeje, pesquise e organize</strong>. Sempre comece pelo básico, nunca por recursos avançados. Evite extremos (só interface, só backend, só teoria).</p>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 1 — Planejamento antes de codificação</h3>
+    <p>Antes de reescrever, migrar ou criar qualquer app, é preciso <strong>entender o problema, o usuário e a viabilidade</strong>. Isso inclui:</p>
+    <ul>
+      <li>Pesquisar plataformas No Code / Low Code e avaliar viabilidade;</li>
+      <li>Definir objetivos, cronograma e metas;</li>
+      <li>Conhecer o perfil do usuário;</li>
+      <li>Analisar concorrentes e mercado.</li>
+    </ul>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> ao migrar um app iOS para Android, o primeiro passo é <em>pesquisar plataformas e avaliar viabilidade</em>, não reescrever código imediatamente.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 2 — Começar pelos fundamentos</h3>
+    <p>Todo ensino ou aprendizado técnico começa pelos <strong>fundamentos</strong>:</p>
+    <ul>
+      <li>Estrutura do sistema operacional (Android);</li>
+      <li>Interface simples e navegação;</li>
+      <li>Variáveis e lógica de programação;</li>
+      <li>Depois estruturas de controle, gamificação e recursos avançados.</li>
+    </ul>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> ao criar um tutorial para novos desenvolvedores Android, comece pela estrutura do S.O. + interface simples, não por serviços em segundo plano.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 3 — Pesquisar dificuldades antes de produzir</h3>
+    <p>Ao criar conteúdo educacional (guia, tutorial, app de ensino), o primeiro passo é <strong>pesquisar as principais dificuldades do público-alvo</strong> e só então produzir conteúdo direcionado.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> ao criar um app guia de desenvolvimento Android, pesquise primeiro as dificuldades dos desenvolvedores.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 4 — Ciclo de vida, intenções e serviços</h3>
+    <p>Antes de aplicar recursos avançados de Android, é preciso <strong>revisar os fundamentos</strong>: ciclo de vida de atividades, intenções e serviços em segundo plano. Esses conceitos sustentam qualquer app Android.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> em um projeto sobre ciclo de vida e serviços, a abordagem inicial é revisar os fundamentos e aplicá-los no desenvolvimento.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 5 — Estrutura cronológica + tutoriais</h3>
+    <p>Para apps educativos sobre história (do Android, por exemplo), organize o conteúdo de forma <strong>cronológica</strong> e integre com <strong>tutoriais práticos</strong> que mostrem a evolução ao longo do tempo.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> ao criar app educativo sobre história do Android, pesquise a história, organize cronologicamente e integre com tutoriais.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 6 — Variáveis e lógica antes de estruturas e gamificação</h3>
+    <p>No ensino de lógica de programação, comece por <strong>variáveis e lógica básica</strong>, avance para <strong>estruturas de desenvolvimento</strong> e só depois implemente <strong>gamificação e recompensas</strong>.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> em um app de ensino de lógica, comece por variáveis e lógica, avance para estruturas e, por fim, gamificação.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 7 — Conteúdo + layout simples + navegação intuitiva</h3>
+    <p>Para apps com listas e navegação, a prioridade é <strong>conteúdo claro</strong>, <strong>layout simples</strong> e <strong>navegação intuitiva</strong>. Recursos avançados (animações, sensores) vêm depois.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> app sobre história do Android com listas: priorize conteúdo + layout simples + navegação intuitiva.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 8 — Interface simples antes de backend</h3>
+    <p>Para apps de informação (pesquisa, comparação, listagem), comece pela <strong>interface simples e intuitiva</strong> e implemente <strong>funcionalidades básicas</strong> (pesquisa e comparação). Não comece por backend, IA ou gráficos avançados.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> app de informações sobre dispositivos móveis: planeje interface simples + pesquisa + comparação.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 9 — Interface + filtragem básica</h3>
+    <p>Em apps de recomendação, comece pela <strong>interface simples</strong> e por um <strong>sistema básico de filtragem</strong> (critérios como preço, tela, bateria). Algoritmos avançados e realidade aumentada vêm depois.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> app de recomendação de dispositivos: interface simples + filtragem básica.
+    </div>
+  </div>
+
+  <div class="box atencao">
+    <h4>⚠ Resumo do Bloco 1</h4>
+    <p>Q1-B, Q2-B, Q3-B, Q4-C, Q5-B, Q6-D, Q7-B, Q8-C, Q9-B.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     BLOCO 2 — Q10 a Q18
+     ============================================================ -->
+<section id="b2" class="">
+  <h2>Bloco 2 — No Code, Design e Otimização (Q10 a Q18)</h2>
+
+  <div class="box">
+    <h4>🎯 Ideia central deste bloco</h4>
+    <p>Escolher plataforma por <strong>alcance de usuários, interface intuitiva e prazo</strong>. Colaborar com designer. Otimizar com <strong>base de código reutilizável</strong>. Priorizar <strong>usabilidade e ciclo de vida</strong> antes de micro serviços.</p>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 10 — Alcance de usuários + interface intuitiva + prazo</h3>
+    <p>Ao escolher uma plataforma No Code para um app de saúde, considere:</p>
+    <ul>
+      <li><strong>Alcance inicial</strong> (atender um grande índice de usuários);</li>
+      <li><strong>Interface de trabalho intuitiva</strong>;</li>
+      <li><strong>Prazo de entrega</strong> relativamente curto;</li>
+      <li><strong>Possibilidade de expansão futura</strong>.</li>
+    </ul>
+    <p>Não escolha só por comunidade ou por alto desempenho com curva longa.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> app de saúde em No Code: escolha o ambiente que atenda mais usuários e tenha interface intuitiva, respeitando o prazo (Q10-A).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 11 — Colaboração com designer</h3>
+    <p>Para criar tela inicial atraente e funcional, <strong>colabore com um designer</strong>. Pesquisa de mercado sozinha não resolve; deixar a tela para depois também não.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> tela inicial: colabore com designer para criar design atraente e funcional (Q11-B).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 12 — Base de código reutilizável</h3>
+    <p>A forma mais eficaz de reduzir tempo e custo é usar uma <strong>plataforma com componentes e programação em blocos</strong>, que oferece base reutilizável. Nativo sempre não é regra; híbrido só para avançados não é regra; PWA exclusivo não cobre tudo.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> otimização: use plataforma com componentes e blocos (Q12-A).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 13 — Treinamento prático em ambientes reais</h3>
+    <p>Para capacitar equipe em ambientes mobile/No Code, a melhor abordagem é <strong>treinamento prático em ambientes específicos</strong>. Consultor externo sozinho não substitui a prática.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> treinamento: treinamentos práticos em ambientes específicos (Q13-A).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 14 — Layout organizado, ícones grandes, textos claros</h3>
+    <p>Para a tela inicial de um app de saúde, use <strong>layout organizado</strong>, <strong>ícones grandes</strong> e <strong>textos claros</strong>. Não use apenas poucos elementos nem animações pesadas.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> design: layout organizado, ícones grandes e textos claros (Q14-A).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 15 — Framework multiplataforma</h3>
+    <p>Para app destinado a Android e iOS, use <strong>framework multiplataforma com base de código compartilhada</strong>. Duas versões separadas aumentam custo; adaptar depois também.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> app Android + iOS: framework multiplataforma (Q15-B).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 16 — Usabilidade e ciclo de vida antes de micro serviços</h3>
+    <p>Ao otimizar projeto mobile existente, comece avaliando <strong>usabilidade</strong> e considerando o <strong>ciclo de vida do aplicativo</strong>. Micro serviços são uma etapa posterior, não a inicial.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> otimização existente: avaliar usabilidade e ciclo de vida (Q16-A).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 17 — Reunião inicial, objetivos e cronograma</h3>
+    <p>Antes de codificar, faça uma <strong>reunião inicial</strong>, defina <strong>objetivos</strong> e estabeleça um <strong>cronograma</strong>. Codificar imediatamente gera retrabalho.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> estrutura inicial: reunião inicial com objetivos e cronograma (Q17-A).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 18 — Testes de usabilidade e feedback</h3>
+    <p>Ao criar layout de app de atividades físicas, faça <strong>testes de usabilidade</strong> e ajuste com base no <strong>feedback dos usuários</strong>. Muitas cores ou excesso de informações atrapalham.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> layout de atividades físicas: testes de usabilidade e feedback (Q18-C).
+    </div>
+  </div>
+
+  <div class="box atencao">
+    <h4>⚠ Resumo do Bloco 2</h4>
+    <p>Q10-A, Q11-B, Q12-A, Q13-A, Q14-A, Q15-B, Q16-A, Q17-A, Q18-C.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     BLOCO 3 — Q19 a Q23
+     ============================================================ -->
+<section id="b3">
+  <h2>Bloco 3 — Layout, Editor de Blocos e Equilíbrio (Q19 a Q23)</h2>
+
+  <div class="box">
+    <h4>🎯 Ideia central deste bloco</h4>
+    <p>Todas as questões deste bloco giram em torno do <strong>equilíbrio teoria + prática</strong> e do <strong>equilíbrio design + funcionalidade</strong>. Nada de extremos.</p>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 19 — Teoria + prática no Editor de blocos</h3>
+    <p>Para ensinar construção de layouts no Editor de blocos, combine <strong>princípios teóricos de design</strong> com <strong>aplicação prática no Editor</strong>. Só teoria ou só prática são insuficientes.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> módulo de layout: teoria + prática no Editor (Q19-C).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 20 — Equilíbrio estética + funcionalidade</h3>
+    <p>Em app de lista de tarefas com Editor de blocos, busque <strong>equilíbrio entre estética e funcionalidade</strong>: layout intuitivo e fácil de navegar. Estética avançada sozinha compromete usabilidade.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> lista de tarefas: equilíbrio estética/funcionalidade (Q20-C).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 21 — Teoria + prática balanceadas</h3>
+    <p>Para ensinar construção de layouts mobile, <strong>combine teoria e prática</strong>, aplicando princípios de design no Editor de blocos. Animações avançadas não substituem fundamentos.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> módulo de layout mobile: teoria + prática balanceadas (Q21-C).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 22 — Treinamento integrado de tecnologias</h3>
+    <p>Em módulo sobre outras tecnologias e linguagens, <strong>integre teoria e prática</strong>, ensinando a <strong>selecionar e integrar diferentes tecnologias</strong> em um projeto. Não foque só em uma linguagem nem em mini-cursos isolados.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> outras tecnologias: treinamento integrado teoria + prática (Q22-C).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 23 — Equilíbrio design + funcionalidade em guia de viagens</h3>
+    <p>Em app guia de viagens com Editor de blocos, busque <strong>equilíbrio entre design e funcionalidade</strong>: interface atraente, intuitiva e interativa. Gráficos avançados não devem tornar a navegação complexa.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> guia de viagens: equilíbrio design/funcionalidade (Q23-C).
+    </div>
+  </div>
+
+  <div class="box atencao">
+    <h4>⚠ Resumo do Bloco 3</h4>
+    <p>Q19-C, Q20-C, Q21-C, Q22-C, Q23-C.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     BLOCO 4 — Q24 a Q27
+     ============================================================ -->
+<section id="b4">
+  <h2>Bloco 4 — Banco de Dados, Frameworks e Ambientes Simples (Q24 a Q27)</h2>
+
+  <div class="box">
+    <h4>🎯 Ideia central deste bloco</h4>
+    <p>Explorar <strong>relacionais e não relacionais</strong> com exemplos práticos. Fazer <strong>workshops práticos</strong> com frameworks. Começar por <strong>ambiente simplificado</strong> com uma funcionalidade clara.</p>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 24 — Relacionais + não relacionais com exemplos</h3>
+    <p>Ao ensinar bancos de dados em apps móveis, aborde <strong>relacionais e não relacionais</strong>, com <strong>exemplos práticos e diferentes cenários</strong>. Só teoria ou só um tipo é insuficiente.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> bancos de dados: relacionais + não relacionais com exemplos (Q24-B).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 25 — Workshops práticos com frameworks e APIs</h3>
+    <p>Para ensinar React Native, Flutter e APIs, faça <strong>workshops práticos</strong> com diferentes frameworks e APIs, permitindo <strong>comparar aplicações</strong>. Não foque em uma única linguagem nem só em teoria.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> React Native/Flutter: workshops práticos com frameworks e APIs (Q25-B).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 26 — Ambiente simplificado + ferramentas básicas</h3>
+    <p>Para app simples de diário pessoal, use um <strong>ambiente simplificado</strong> e aprenda <strong>componentes e ferramentas básicas</strong>. Bibliotecas sofisticadas e linha de comando não são o ponto de partida.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> diário pessoal: ambiente simplificado + ferramentas básicas (Q26-B).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conceito-chave 27 — Ambiente simplificado + funcionalidade clara</h3>
+    <p>Para o primeiro app (cronômetro ou calculadora), use <strong>ambiente simplificado</strong> e desenvolva <strong>uma funcionalidade clara</strong>, priorizando interface e funcionamento. Recursos avançados vêm depois.</p>
+    <div class="box exemplo">
+      <strong>Exemplo:</strong> cronômetro/calculadora: ambiente simplificado + funcionalidade clara (Q27-B).
+    </div>
+  </div>
+
+  <div class="box atencao">
+    <h4>⚠ Resumo do Bloco 4</h4>
+    <p>Q24-B, Q25-B, Q26-B, Q27-B.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAPA DAS QUESTÕES — VERSÃO DEFINITIVA
+     ============================================================ -->
+<section id="mapa" class="">
+  <h2>🗺️ Mapa — Questão ↔ Conceito ↔ Bloco</h2>
+  <p>Veja abaixo como cada questão se conecta ao conceito que a justifica. <strong>Versão definitiva</strong>, com ajustes em Q6 e Q10.</p>
+
+  <div class="mapa">
+    <div class="item"><strong>Q1</strong> — Migração iOS→Android → <em>Planejamento antes de codar</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q2</strong> — Tutorial Android → <em>Fundamentos primeiro</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q3</strong> — Guia Android → <em>Pesquisar dificuldades</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q4</strong> — Ciclo de vida/serviços → <em>Revisar fundamentos</em><span class="letra">C</span></div>
+    <div class="item"><strong>Q5</strong> — História do Android → <em>Cronologia + tutoriais</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q6</strong> — Lógica de programação → <em>Variáveis e lógica antes de estruturas e gamificação</em><span class="letra">D</span></div>
+    <div class="item"><strong>Q7</strong> — História com listas → <em>Conteúdo + layout simples</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q8</strong> — Dispositivos móveis → <em>Interface simples + pesquisa</em><span class="letra">C</span></div>
+    <div class="item"><strong>Q9</strong> — Recomendação → <em>Interface + filtragem básica</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q10</strong> — Saúde No Code → <em>Alcance de usuários + interface intuitiva + prazo</em><span class="letra">A</span></div>
+    <div class="item"><strong>Q11</strong> — Tela inicial → <em>Colaborar com designer</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q12</strong> — Otimização → <em>Base de código reutilizável</em><span class="letra">A</span></div>
+    <div class="item"><strong>Q13</strong> — Treinamento → <em>Prática em ambientes específicos</em><span class="letra">A</span></div>
+    <div class="item"><strong>Q14</strong> — Design saúde → <em>Layout organizado</em><span class="letra">A</span></div>
+    <div class="item"><strong>Q15</strong> — Android + iOS → <em>Framework multiplataforma</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q16</strong> — Otimizar existente → <em>Usabilidade e ciclo de vida</em><span class="letra">A</span></div>
+    <div class="item"><strong>Q17</strong> — Estrutura inicial → <em>Reunião + objetivos + cronograma</em><span class="letra">A</span></div>
+    <div class="item"><strong>Q18</strong> — Atividades físicas → <em>Testes de usabilidade</em><span class="letra">C</span></div>
+    <div class="item"><strong>Q19</strong> — Editor de blocos → <em>Teoria + prática</em><span class="letra">C</span></div>
+    <div class="item"><strong>Q20</strong> — Lista de tarefas → <em>Estética + funcionalidade</em><span class="letra">C</span></div>
+    <div class="item"><strong>Q21</strong> — Layout mobile → <em>Teoria + prática</em><span class="letra">C</span></div>
+    <div class="item"><strong>Q22</strong> — Outras tecnologias → <em>Integração teoria + prática</em><span class="letra">C</span></div>
+    <div class="item"><strong>Q23</strong> — Guia de viagens → <em>Design + funcionalidade</em><span class="letra">C</span></div>
+    <div class="item"><strong>Q24</strong> — Bancos de dados → <em>Relacionais + não relacionais</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q25</strong> — React Native/Flutter → <em>Workshops práticos</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q26</strong> — Diário pessoal → <em>Ambiente simplificado</em><span class="letra">B</span></div>
+    <div class="item"><strong>Q27</strong> — Cronômetro/calculadora → <em>Ambiente simplificado + 1 função</em><span class="letra">B</span></div>
+  </div>
+
+  <div class="box">
+    <h4>📊 Padrão geral</h4>
+    <ul>
+      <li><strong>Q1–Q9:</strong> planejamento, fundamentos e estrutura antes de recursos avançados;</li>
+      <li><strong>Q10–Q18:</strong> viabilidade, usabilidade, colaboração e base reutilizável;</li>
+      <li><strong>Q19–Q23:</strong> equilíbrio entre teoria e prática e entre design e funcionalidade;</li>
+      <li><strong>Q24–Q27:</strong> exemplos práticos, workshops e ambientes simplificados.</li>
+    </ul>
+  </div>
+
+  <div class="box atencao">
+    <h4>⚠ Ajustes aplicados nesta versão</h4>
+    <ul>
+      <li><strong>Q6:</strong> antes era “Variáveis antes de gamificação”; agora é <em>“Variáveis e lógica antes de estruturas e gamificação”</em>, refletindo o enunciado original completo.</li>
+      <li><strong>Q10:</strong> antes era “Viabilidade e usabilidade”; agora é <em>“Alcance de usuários + interface intuitiva + prazo”</em>, refletindo exatamente a alternativa A.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUESTIONÁRIO
+     ============================================================ -->
+<section id="questoes" class="active">
+  <h2>📝 Questionário Final — 27 Questões</h2>
+  <p class="progresso" id="progresso">Respondidas: 27 / 27</p>
+
+  <div id="listaQuestoes"><div class="questao"><p class="enunciado"><span class="tag">Q1</span>Ao migrar um aplicativo iOS para Android, qual é a ação mais adequada para iniciar o projeto?</p><div class="alternativas"><label><input type="radio" name="q0" value="0"> <strong>A)</strong> Reescrever imediatamente todo o código em uma linguagem mobile.</label><label><input type="radio" name="q0" value="1"> <strong>B)</strong> Pesquisar plataformas No Code e avaliar sua viabilidade para o projeto.</label><label><input type="radio" name="q0" value="2"> <strong>C)</strong> Redesenhar apenas a interface, assumindo compatibilidade da lógica.</label><label><input type="radio" name="q0" value="3"> <strong>D)</strong> Adaptar imediatamente o aplicativo utilizando uma ferramenta de desenvolvimento cruzado.</label></div><div class="resultado ok" id="res0">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q2</span>Para criar um tutorial introdutório para novos desenvolvedores Android, por onde começar?</p><div class="alternativas"><label><input type="radio" name="q1" value="0"> <strong>A)</strong> Ensinar serviços em segundo plano antes dos fundamentos.</label><label><input type="radio" name="q1" value="1"> <strong>B)</strong> Apresentar a estrutura básica do Android e, em seguida, uma interface simples.</label><label><input type="radio" name="q1" value="2"> <strong>C)</strong> Ir diretamente para exemplos de codificação, sem abordar fundamentos.</label><label><input type="radio" name="q1" value="3"> <strong>D)</strong> Concentrar-se exclusivamente no design visual das aplicações.</label></div><div class="resultado ok" id="res1">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q3</span>Ao criar um aplicativo guia para desenvolvimento Android, qual deve ser a abordagem inicial?</p><div class="alternativas"><label><input type="radio" name="q2" value="0"> <strong>A)</strong> Começar por técnicas avançadas de programação.</label><label><input type="radio" name="q2" value="1"> <strong>B)</strong> Pesquisar as principais dificuldades dos desenvolvedores e criar conteúdo para esses pontos.</label><label><input type="radio" name="q2" value="2"> <strong>C)</strong> Desenvolver primeiro uma interface visualmente atraente, deixando o conteúdo em segundo plano.</label><label><input type="radio" name="q2" value="3"> <strong>D)</strong> Concentrar-se exclusivamente na história e evolução do Android.</label></div><div class="resultado ok" id="res2">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q4</span>Em um projeto que aborda ciclo de vida, intenções e serviços em segundo plano, qual é a abordagem inicial mais adequada?</p><div class="alternativas"><label><input type="radio" name="q3" value="0"> <strong>A)</strong> Priorizar o design visual antes de compreender as funcionalidades.</label><label><input type="radio" name="q3" value="1"> <strong>B)</strong> Utilizar inicialmente recursos avançados e complexos do Android.</label><label><input type="radio" name="q3" value="2"> <strong>C)</strong> Revisar os fundamentos do Android e aplicar esses conceitos no desenvolvimento.</label><label><input type="radio" name="q3" value="3"> <strong>D)</strong> Ignorar as particularidades do Android e utilizar apenas princípios gerais de software.</label></div><div class="resultado ok" id="res3">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q5</span>Ao criar um aplicativo educativo sobre a história do Android, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q4" value="0"> <strong>A)</strong> Implementar funcionalidades complexas antes do conteúdo histórico.</label><label><input type="radio" name="q4" value="1"> <strong>B)</strong> Pesquisar a história do Android, organizá-la cronologicamente e integrá-la a tutoriais.</label><label><input type="radio" name="q4" value="2"> <strong>C)</strong> Priorizar exclusivamente uma interface visualmente atraente.</label><label><input type="radio" name="q4" value="3"> <strong>D)</strong> Começar por tutoriais avançados de desenvolvimento mobile.</label></div><div class="resultado ok" id="res4">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q6</span>Para criar um aplicativo de ensino de lógica de programação, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q5" value="0"> <strong>A)</strong> Começar por algoritmos complexos para desafios de programação.</label><label><input type="radio" name="q5" value="1"> <strong>B)</strong> Iniciar por estruturas avançadas de programação.</label><label><input type="radio" name="q5" value="2"> <strong>C)</strong> Desenvolver primeiro uma interface sofisticada.</label><label><input type="radio" name="q5" value="3"> <strong>D)</strong> Começar por variáveis e lógica, avançando depois para estruturas e gamificação.</label></div><div class="resultado ok" id="res5">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q7</span>Para um aplicativo sobre a história do Android que utilize listas e navegação entre telas, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q6" value="0"> <strong>A)</strong> Começar por animações e sensores antes da estrutura básica.</label><label><input type="radio" name="q6" value="1"> <strong>B)</strong> Priorizar conteúdo histórico claro, layout simples e navegação intuitiva.</label><label><input type="radio" name="q6" value="2"> <strong>C)</strong> Apresentar apenas textos, sem interações ou navegação.</label><label><input type="radio" name="q6" value="3"> <strong>D)</strong> Desenvolver primeiro uma versão técnica voltada a usuários avançados.</label></div><div class="resultado ok" id="res6">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q8</span>Ao desenvolver um aplicativo para pesquisar, visualizar e comparar dispositivos móveis, como iniciar?</p><div class="alternativas"><label><input type="radio" name="q7" value="0"> <strong>A)</strong> Criar primeiro uma interface gráfica sofisticada, antes da lógica.</label><label><input type="radio" name="q7" value="1"> <strong>B)</strong> Desenvolver primeiro um backend, deixando a interface para depois.</label><label><input type="radio" name="q7" value="2"> <strong>C)</strong> Planejar uma interface simples e intuitiva, implementando pesquisa e comparação.</label><label><input type="radio" name="q7" value="3"> <strong>D)</strong> Desenvolver primeiro recomendações baseadas em inteligência artificial.</label></div><div class="resultado ok" id="res7">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q9</span>Para um aplicativo que recomenda dispositivos com base em critérios como preço, tela e bateria, qual abordagem inicial é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q8" value="0"> <strong>A)</strong> Desenvolver primeiro um algoritmo de recomendação, sem definir interface e filtros.</label><label><input type="radio" name="q8" value="1"> <strong>B)</strong> Criar uma interface simples e implementar inicialmente um sistema básico de filtragem.</label><label><input type="radio" name="q8" value="2"> <strong>C)</strong> Priorizar realidade aumentada antes da recomendação básica.</label><label><input type="radio" name="q8" value="3"> <strong>D)</strong> Concentrar-se inicialmente apenas na estética do aplicativo.</label></div><div class="resultado ok" id="res8">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q10</span>Para desenvolver inicialmente um aplicativo de saúde em uma plataforma No Code, considerando prazo, acessibilidade e possibilidade de expansão futura, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q9" value="0"> <strong>A)</strong> Escolher um ambiente que atenda inicialmente a um grande número de usuários e possua interface de trabalho intuitiva.</label><label><input type="radio" name="q9" value="1"> <strong>B)</strong> Escolher uma plataforma principalmente pela existência de uma grande comunidade, independentemente do prazo de aprendizado.</label><label><input type="radio" name="q9" value="2"> <strong>C)</strong> Priorizar alto desempenho e interfaces avançadas, mesmo com uma curva de aprendizado longa.</label><label><input type="radio" name="q9" value="3"> <strong>D)</strong> Desenvolver versões nativas separadas para cada sistema operacional.</label></div><div class="resultado ok" id="res9">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q11</span>Qual ação é mais adequada para desenvolver uma tela inicial atraente e funcional?</p><div class="alternativas"><label><input type="radio" name="q10" value="0"> <strong>A)</strong> Realizar apenas uma pesquisa de mercado sobre preferências visuais.</label><label><input type="radio" name="q10" value="1"> <strong>B)</strong> Colaborar com um designer para criar um design visualmente atraente e funcional.</label><label><input type="radio" name="q10" value="2"> <strong>C)</strong> Priorizar as funcionalidades e deixar a tela inicial para uma etapa posterior.</label><label><input type="radio" name="q10" value="3"> <strong>D)</strong> Utilizar um framework de interface como solução principal, independentemente das necessidades do projeto.</label></div><div class="resultado ok" id="res10">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q12</span>Qual estratégia pode contribuir para reduzir tempo e custos no desenvolvimento de aplicativos móveis?</p><div class="alternativas"><label><input type="radio" name="q11" value="0"> <strong>A)</strong> Utilizar uma plataforma com componentes e programação em blocos que forneça uma base reutilizável.</label><label><input type="radio" name="q11" value="1"> <strong>B)</strong> Utilizar sempre desenvolvimento nativo Android, independentemente do projeto.</label><label><input type="radio" name="q11" value="2"> <strong>C)</strong> Utilizar desenvolvimento híbrido somente em projetos avançados.</label><label><input type="radio" name="q11" value="3"> <strong>D)</strong> Desenvolver exclusivamente PWAs.</label></div><div class="resultado ok" id="res11">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q13</span>Para aprimorar o conhecimento da equipe sobre ambientes de desenvolvimento mobile, especialmente No Code, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q12" value="0"> <strong>A)</strong> Realizar treinamentos práticos nos ambientes de desenvolvimento específicos.</label><label><input type="radio" name="q12" value="1"> <strong>B)</strong> Contratar exclusivamente um consultor externo.</label><label><input type="radio" name="q12" value="2"> <strong>C)</strong> Escolher uma única plataforma sem realizar estudos adicionais.</label><label><input type="radio" name="q12" value="3"> <strong>D)</strong> Realizar apenas pesquisas de mercado sobre plataformas móveis.</label></div><div class="resultado ok" id="res12">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q14</span>Qual abordagem é mais adequada para a tela inicial de um aplicativo de saúde?</p><div class="alternativas"><label><input type="radio" name="q13" value="0"> <strong>A)</strong> Utilizar layout organizado, ícones grandes e textos claros, facilitando a navegação.</label><label><input type="radio" name="q13" value="1"> <strong>B)</strong> Utilizar poucos elementos, priorizando a estética e a simplicidade.</label><label><input type="radio" name="q13" value="2"> <strong>C)</strong> Utilizar muitas animações e elementos dinâmicos.</label><label><input type="radio" name="q13" value="3"> <strong>D)</strong> Utilizar uma interface predominantemente textual, com descrições detalhadas.</label></div><div class="resultado ok" id="res13">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q15</span>Para desenvolver um aplicativo de viagens destinado a Android e iOS, qual estratégia é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q14" value="0"> <strong>A)</strong> Desenvolver duas versões completamente separadas.</label><label><input type="radio" name="q14" value="1"> <strong>B)</strong> Utilizar um framework multiplataforma com uma base de código compartilhada.</label><label><input type="radio" name="q14" value="2"> <strong>C)</strong> Desenvolver primeiro para uma plataforma e adaptar posteriormente para a outra.</label><label><input type="radio" name="q14" value="3"> <strong>D)</strong> Utilizar desenvolvedores especializados para criar versões independentes.</label></div><div class="resultado ok" id="res14">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q16</span>Ao otimizar a estrutura de um projeto mobile existente, qual estratégia inicial é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q15" value="0"> <strong>A)</strong> Avaliar a usabilidade e considerar o ciclo de vida do aplicativo.</label><label><input type="radio" name="q15" value="1"> <strong>B)</strong> Migrar imediatamente o aplicativo para uma plataforma mais avançada.</label><label><input type="radio" name="q15" value="2"> <strong>C)</strong> Contratar consultores para monitorar o projeto.</label><label><input type="radio" name="q15" value="3"> <strong>D)</strong> Adotar microsserviços imediatamente para garantir escalabilidade.</label></div><div class="resultado ok" id="res15">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q17</span>Antes de iniciar a codificação de um aplicativo, qual ação é mais adequada para estruturar o projeto?</p><div class="alternativas"><label><input type="radio" name="q16" value="0"> <strong>A)</strong> Realizar uma reunião inicial, definir objetivos e estabelecer um cronograma.</label><label><input type="radio" name="q16" value="1"> <strong>B)</strong> Começar imediatamente a codificação para ganhar tempo.</label><label><input type="radio" name="q16" value="2"> <strong>C)</strong> Designar apenas um desenvolvedor para todo o projeto.</label><label><input type="radio" name="q16" value="3"> <strong>D)</strong> Permitir que a equipe trabalhe sem objetivos ou marcos definidos.</label></div><div class="resultado ok" id="res16">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q18</span>Ao criar o layout inicial de um aplicativo de atividades físicas, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q17" value="0"> <strong>A)</strong> Utilizar muitas cores vibrantes para destacar as informações.</label><label><input type="radio" name="q17" value="1"> <strong>B)</strong> Exibir o máximo possível de informações na tela inicial.</label><label><input type="radio" name="q17" value="2"> <strong>C)</strong> Realizar testes de usabilidade e ajustar o layout com base no feedback dos usuários.</label><label><input type="radio" name="q17" value="3"> <strong>D)</strong> Criar um design único e diferenciado, mesmo que isso aumente significativamente o tempo de desenvolvimento.</label></div><div class="resultado ok" id="res17">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q19</span>Para ensinar a construção de layouts utilizando o Editor de blocos, qual abordagem é mais eficaz?</p><div class="alternativas"><label><input type="radio" name="q18" value="0"> <strong>A)</strong> Concentrar-se exclusivamente na teoria do design.</label><label><input type="radio" name="q18" value="1"> <strong>B)</strong> Concentrar-se exclusivamente na prática do Editor de blocos.</label><label><input type="radio" name="q18" value="2"> <strong>C)</strong> Combinar princípios teóricos de design com aplicação prática no Editor de blocos.</label><label><input type="radio" name="q18" value="3"> <strong>D)</strong> Concentrar-se em animações e interatividade avançadas.</label></div><div class="resultado ok" id="res18">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q20</span>Para desenvolver um aplicativo de lista de tarefas utilizando o Editor de blocos, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q19" value="0"> <strong>A)</strong> Priorizar estética avançada, mesmo comprometendo a usabilidade.</label><label><input type="radio" name="q19" value="1"> <strong>B)</strong> Criar um layout básico, sem preocupação com aspectos estéticos.</label><label><input type="radio" name="q19" value="2"> <strong>C)</strong> Equilibrar estética e funcionalidade, criando um layout intuitivo e fácil de navegar.</label><label><input type="radio" name="q19" value="3"> <strong>D)</strong> Utilizar uma interface predominantemente textual e baseada em comandos.</label></div><div class="resultado ok" id="res19">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q21</span>Qual abordagem é mais eficaz para ensinar construção de layouts para aplicativos móveis?</p><div class="alternativas"><label><input type="radio" name="q20" value="0"> <strong>A)</strong> Ensinar exclusivamente a teoria do design de interfaces.</label><label><input type="radio" name="q20" value="1"> <strong>B)</strong> Ensinar exclusivamente a utilização prática do Editor de blocos.</label><label><input type="radio" name="q20" value="2"> <strong>C)</strong> Combinar teoria e prática, aplicando princípios de design no Editor de blocos.</label><label><input type="radio" name="q20" value="3"> <strong>D)</strong> Ensinar principalmente animações e gráficos interativos avançados.</label></div><div class="resultado ok" id="res20">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q22</span>Para um módulo sobre outras tecnologias e linguagens para desenvolvimento de aplicativos, qual abordagem é mais eficaz?</p><div class="alternativas"><label><input type="radio" name="q21" value="0"> <strong>A)</strong> Concentrar o curso em uma única linguagem avançada.</label><label><input type="radio" name="q21" value="1"> <strong>B)</strong> Oferecer mini-cursos independentes sobre diferentes tecnologias e linguagens.</label><label><input type="radio" name="q21" value="2"> <strong>C)</strong> Integrar teoria e prática, ensinando a selecionar e integrar diferentes tecnologias e linguagens em um projeto.</label><label><input type="radio" name="q21" value="3"> <strong>D)</strong> Concentrar-se exclusivamente em frameworks cross-platform.</label></div><div class="resultado ok" id="res21">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q23</span>Para desenvolver um aplicativo guia de viagens utilizando o Editor de blocos, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q22" value="0"> <strong>A)</strong> Priorizar gráficos avançados, mesmo tornando a navegação mais complexa.</label><label><input type="radio" name="q22" value="1"> <strong>B)</strong> Criar um layout simples, sem preocupação com aspectos visuais.</label><label><input type="radio" name="q22" value="2"> <strong>C)</strong> Equilibrar design e funcionalidade, criando uma interface atraente, intuitiva e interativa.</label><label><input type="radio" name="q22" value="3"> <strong>D)</strong> Utilizar uma interface predominantemente textual.</label></div><div class="resultado ok" id="res22">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q24</span>Para ensinar bancos de dados em aplicativos móveis, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q23" value="0"> <strong>A)</strong> Ensinar exclusivamente bancos de dados relacionais.</label><label><input type="radio" name="q23" value="1"> <strong>B)</strong> Abordar bancos relacionais e não relacionais, utilizando exemplos práticos e diferentes cenários.</label><label><input type="radio" name="q23" value="2"> <strong>C)</strong> Ensinar exclusivamente bancos de dados não relacionais.</label><label><input type="radio" name="q23" value="3"> <strong>D)</strong> Trabalhar apenas conceitos teóricos, sem exemplos práticos.</label></div><div class="resultado ok" id="res23">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q25</span>Para ensinar tecnologias como React Native e Flutter, além da integração com APIs, qual abordagem é mais eficaz?</p><div class="alternativas"><label><input type="radio" name="q24" value="0"> <strong>A)</strong> Concentrar-se em uma única linguagem e framework.</label><label><input type="radio" name="q24" value="1"> <strong>B)</strong> Realizar workshops práticos com diferentes frameworks e APIs, permitindo comparar suas aplicações.</label><label><input type="radio" name="q24" value="2"> <strong>C)</strong> Trabalhar exclusivamente os conceitos teóricos das tecnologias.</label><label><input type="radio" name="q24" value="3"> <strong>D)</strong> Integrar o conteúdo apenas a plataformas comerciais de desenvolvimento.</label></div><div class="resultado ok" id="res24">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q26</span>Para desenvolver um aplicativo simples de diário pessoal e familiarizar-se com um ambiente mobile, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q25" value="0"> <strong>A)</strong> Utilizar bibliotecas sofisticadas para implementar recursos avançados.</label><label><input type="radio" name="q25" value="1"> <strong>B)</strong> Utilizar um ambiente simplificado e aprender seus componentes e ferramentas básicas.</label><label><input type="radio" name="q25" value="2"> <strong>C)</strong> Concentrar-se exclusivamente no design gráfico.</label><label><input type="radio" name="q25" value="3"> <strong>D)</strong> Desenvolver somente por linha de comando, sem utilizar um ambiente específico.</label></div><div class="resultado ok" id="res25">✔ Correto</div></div><div class="questao"><p class="enunciado"><span class="tag">Q27</span>Para um primeiro aplicativo simples, como um cronômetro ou calculadora, qual abordagem é mais adequada?</p><div class="alternativas"><label><input type="radio" name="q26" value="0"> <strong>A)</strong> Utilizar recursos avançados de design e programação.</label><label><input type="radio" name="q26" value="1"> <strong>B)</strong> Utilizar um ambiente simplificado e desenvolver uma funcionalidade clara, priorizando interface e funcionamento.</label><label><input type="radio" name="q26" value="2"> <strong>C)</strong> Concentrar-se principalmente no aspecto visual.</label><label><input type="radio" name="q26" value="3"> <strong>D)</strong> Utilizar desde o início uma plataforma de programação mais desafiadora.</label></div><div class="resultado ok" id="res26">✔ Correto</div></div></div>
+
+  <div style="text-align:center;margin-top:24px;">
+    <button class="btn green" id="btnGabarito">Liberar Gabarito</button>
+    <button class="btn warn" id="btnLimpar">Limpar Respostas</button>
+  </div>
+
+  <div class="gabarito show" id="gabarito">
+    <h3>Gabarito oficial com justificativas</h3>
+    <ol id="listaGabarito"><li><strong>Q1:</strong> B
+    <div class="explica">Planejamento antes de codar: pesquisar e avaliar viabilidade é o primeiro passo.</div></li><li><strong>Q2:</strong> B
+    <div class="explica">Fundamentos primeiro: estrutura do S.O. + interface simples.</div></li><li><strong>Q3:</strong> B
+    <div class="explica">Pesquisar dificuldades antes de produzir conteúdo direcionado.</div></li><li><strong>Q4:</strong> C
+    <div class="explica">Revisar fundamentos (ciclo de vida, intenções, serviços) antes de aplicar.</div></li><li><strong>Q5:</strong> B
+    <div class="explica">Estrutura cronológica + tutoriais práticos.</div></li><li><strong>Q6:</strong> D
+    <div class="explica">Variáveis e lógica antes de estruturas de desenvolvimento e gamificação.</div></li><li><strong>Q7:</strong> B
+    <div class="explica">Conteúdo + layout simples + navegação intuitiva.</div></li><li><strong>Q8:</strong> C
+    <div class="explica">Interface simples + pesquisa e comparação.</div></li><li><strong>Q9:</strong> B
+    <div class="explica">Interface simples + filtragem básica.</div></li><li><strong>Q10:</strong> A
+    <div class="explica">Alcance de usuários + interface intuitiva + prazo de entrega.</div></li><li><strong>Q11:</strong> B
+    <div class="explica">Colaborar com designer.</div></li><li><strong>Q12:</strong> A
+    <div class="explica">Base de código reutilizável.</div></li><li><strong>Q13:</strong> A
+    <div class="explica">Treinamento prático em ambientes específicos.</div></li><li><strong>Q14:</strong> A
+    <div class="explica">Layout organizado, ícones grandes, textos claros.</div></li><li><strong>Q15:</strong> B
+    <div class="explica">Framework multiplataforma.</div></li><li><strong>Q16:</strong> A
+    <div class="explica">Usabilidade e ciclo de vida antes de micro serviços.</div></li><li><strong>Q17:</strong> A
+    <div class="explica">Reunião inicial + objetivos + cronograma.</div></li><li><strong>Q18:</strong> C
+    <div class="explica">Testes de usabilidade com feedback.</div></li><li><strong>Q19:</strong> C
+    <div class="explica">Teoria + prática no Editor de blocos.</div></li><li><strong>Q20:</strong> C
+    <div class="explica">Equilíbrio estética + funcionalidade.</div></li><li><strong>Q21:</strong> C
+    <div class="explica">Teoria + prática balanceadas.</div></li><li><strong>Q22:</strong> C
+    <div class="explica">Treinamento integrado teoria + prática.</div></li><li><strong>Q23:</strong> C
+    <div class="explica">Equilíbrio design + funcionalidade.</div></li><li><strong>Q24:</strong> B
+    <div class="explica">Relacionais + não relacionais com exemplos.</div></li><li><strong>Q25:</strong> B
+    <div class="explica">Workshops práticos com frameworks e APIs.</div></li><li><strong>Q26:</strong> B
+    <div class="explica">Ambiente simplificado + ferramentas básicas.</div></li><li><strong>Q27:</strong> B
+    <div class="explica">Ambiente simplificado + uma funcionalidade clara.</div></li></ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Guia de Apoio — 27 Questões Verificação Final · Material didático de referência
+</footer>
+
+<script>
+/* NAVEGAÇÃO */
+const botoes = document.querySelectorAll('nav button');
+const secoes = document.querySelectorAll('main section');
+botoes.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    botoes.forEach(b=>b.classList.remove('active'));
+    secoes.forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+
+/* QUESTÕES — enunciados originais + gabarito oficial */
+const questoes = [
+  // Q1
+  {q:"Ao migrar um aplicativo iOS para Android, qual é a ação mais adequada para iniciar o projeto?",
+   a:["Reescrever imediatamente todo o código em uma linguagem mobile.",
+      "Pesquisar plataformas No Code e avaliar sua viabilidade para o projeto.",
+      "Redesenhar apenas a interface, assumindo compatibilidade da lógica.",
+      "Adaptar imediatamente o aplicativo utilizando uma ferramenta de desenvolvimento cruzado."],
+   c:1, just:"Planejamento antes de codar: pesquisar e avaliar viabilidade é o primeiro passo."},
+  // Q2
+  {q:"Para criar um tutorial introdutório para novos desenvolvedores Android, por onde começar?",
+   a:["Ensinar serviços em segundo plano antes dos fundamentos.",
+      "Apresentar a estrutura básica do Android e, em seguida, uma interface simples.",
+      "Ir diretamente para exemplos de codificação, sem abordar fundamentos.",
+      "Concentrar-se exclusivamente no design visual das aplicações."],
+   c:1, just:"Fundamentos primeiro: estrutura do S.O. + interface simples."},
+  // Q3
+  {q:"Ao criar um aplicativo guia para desenvolvimento Android, qual deve ser a abordagem inicial?",
+   a:["Começar por técnicas avançadas de programação.",
+      "Pesquisar as principais dificuldades dos desenvolvedores e criar conteúdo para esses pontos.",
+      "Desenvolver primeiro uma interface visualmente atraente, deixando o conteúdo em segundo plano.",
+      "Concentrar-se exclusivamente na história e evolução do Android."],
+   c:1, just:"Pesquisar dificuldades antes de produzir conteúdo direcionado."},
+  // Q4
+  {q:"Em um projeto que aborda ciclo de vida, intenções e serviços em segundo plano, qual é a abordagem inicial mais adequada?",
+   a:["Priorizar o design visual antes de compreender as funcionalidades.",
+      "Utilizar inicialmente recursos avançados e complexos do Android.",
+      "Revisar os fundamentos do Android e aplicar esses conceitos no desenvolvimento.",
+      "Ignorar as particularidades do Android e utilizar apenas princípios gerais de software."],
+   c:2, just:"Revisar fundamentos (ciclo de vida, intenções, serviços) antes de aplicar."},
+  // Q5
+  {q:"Ao criar um aplicativo educativo sobre a história do Android, qual abordagem é mais adequada?",
+   a:["Implementar funcionalidades complexas antes do conteúdo histórico.",
+      "Pesquisar a história do Android, organizá-la cronologicamente e integrá-la a tutoriais.",
+      "Priorizar exclusivamente uma interface visualmente atraente.",
+      "Começar por tutoriais avançados de desenvolvimento mobile."],
+   c:1, just:"Estrutura cronológica + tutoriais práticos."},
+  // Q6
+  {q:"Para criar um aplicativo de ensino de lógica de programação, qual abordagem é mais adequada?",
+   a:["Começar por algoritmos complexos para desafios de programação.",
+      "Iniciar por estruturas avançadas de programação.",
+      "Desenvolver primeiro uma interface sofisticada.",
+      "Começar por variáveis e lógica, avançando depois para estruturas e gamificação."],
+   c:3, just:"Variáveis e lógica antes de estruturas de desenvolvimento e gamificação."},
+  // Q7
+  {q:"Para um aplicativo sobre a história do Android que utilize listas e navegação entre telas, qual abordagem é mais adequada?",
+   a:["Começar por animações e sensores antes da estrutura básica.",
+      "Priorizar conteúdo histórico claro, layout simples e navegação intuitiva.",
+      "Apresentar apenas textos, sem interações ou navegação.",
+      "Desenvolver primeiro uma versão técnica voltada a usuários avançados."],
+   c:1, just:"Conteúdo + layout simples + navegação intuitiva."},
+  // Q8
+  {q:"Ao desenvolver um aplicativo para pesquisar, visualizar e comparar dispositivos móveis, como iniciar?",
+   a:["Criar primeiro uma interface gráfica sofisticada, antes da lógica.",
+      "Desenvolver primeiro um backend, deixando a interface para depois.",
+      "Planejar uma interface simples e intuitiva, implementando pesquisa e comparação.",
+      "Desenvolver primeiro recomendações baseadas em inteligência artificial."],
+   c:2, just:"Interface simples + pesquisa e comparação."},
+  // Q9
+  {q:"Para um aplicativo que recomenda dispositivos com base em critérios como preço, tela e bateria, qual abordagem inicial é mais adequada?",
+   a:["Desenvolver primeiro um algoritmo de recomendação, sem definir interface e filtros.",
+      "Criar uma interface simples e implementar inicialmente um sistema básico de filtragem.",
+      "Priorizar realidade aumentada antes da recomendação básica.",
+      "Concentrar-se inicialmente apenas na estética do aplicativo."],
+   c:1, just:"Interface simples + filtragem básica."},
+  // Q10
+  {q:"Para desenvolver inicialmente um aplicativo de saúde em uma plataforma No Code, considerando prazo, acessibilidade e possibilidade de expansão futura, qual abordagem é mais adequada?",
+   a:["Escolher um ambiente que atenda inicialmente a um grande número de usuários e possua interface de trabalho intuitiva.",
+      "Escolher uma plataforma principalmente pela existência de uma grande comunidade, independentemente do prazo de aprendizado.",
+      "Priorizar alto desempenho e interfaces avançadas, mesmo com uma curva de aprendizado longa.",
+      "Desenvolver versões nativas separadas para cada sistema operacional."],
+   c:0, just:"Alcance de usuários + interface intuitiva + prazo de entrega."},
+  // Q11
+  {q:"Qual ação é mais adequada para desenvolver uma tela inicial atraente e funcional?",
+   a:["Realizar apenas uma pesquisa de mercado sobre preferências visuais.",
+      "Colaborar com um designer para criar um design visualmente atraente e funcional.",
+      "Priorizar as funcionalidades e deixar a tela inicial para uma etapa posterior.",
+      "Utilizar um framework de interface como solução principal, independentemente das necessidades do projeto."],
+   c:1, just:"Colaborar com designer."},
+  // Q12
+  {q:"Qual estratégia pode contribuir para reduzir tempo e custos no desenvolvimento de aplicativos móveis?",
+   a:["Utilizar uma plataforma com componentes e programação em blocos que forneça uma base reutilizável.",
+      "Utilizar sempre desenvolvimento nativo Android, independentemente do projeto.",
+      "Utilizar desenvolvimento híbrido somente em projetos avançados.",
+      "Desenvolver exclusivamente PWAs."],
+   c:0, just:"Base de código reutilizável."},
+  // Q13
+  {q:"Para aprimorar o conhecimento da equipe sobre ambientes de desenvolvimento mobile, especialmente No Code, qual abordagem é mais adequada?",
+   a:["Realizar treinamentos práticos nos ambientes de desenvolvimento específicos.",
+      "Contratar exclusivamente um consultor externo.",
+      "Escolher uma única plataforma sem realizar estudos adicionais.",
+      "Realizar apenas pesquisas de mercado sobre plataformas móveis."],
+   c:0, just:"Treinamento prático em ambientes específicos."},
+  // Q14
+  {q:"Qual abordagem é mais adequada para a tela inicial de um aplicativo de saúde?",
+   a:["Utilizar layout organizado, ícones grandes e textos claros, facilitando a navegação.",
+      "Utilizar poucos elementos, priorizando a estética e a simplicidade.",
+      "Utilizar muitas animações e elementos dinâmicos.",
+      "Utilizar uma interface predominantemente textual, com descrições detalhadas."],
+   c:0, just:"Layout organizado, ícones grandes, textos claros."},
+  // Q15
+  {q:"Para desenvolver um aplicativo de viagens destinado a Android e iOS, qual estratégia é mais adequada?",
+   a:["Desenvolver duas versões completamente separadas.",
+      "Utilizar um framework multiplataforma com uma base de código compartilhada.",
+      "Desenvolver primeiro para uma plataforma e adaptar posteriormente para a outra.",
+      "Utilizar desenvolvedores especializados para criar versões independentes."],
+   c:1, just:"Framework multiplataforma."},
+  // Q16
+  {q:"Ao otimizar a estrutura de um projeto mobile existente, qual estratégia inicial é mais adequada?",
+   a:["Avaliar a usabilidade e considerar o ciclo de vida do aplicativo.",
+      "Migrar imediatamente o aplicativo para uma plataforma mais avançada.",
+      "Contratar consultores para monitorar o projeto.",
+      "Adotar microsserviços imediatamente para garantir escalabilidade."],
+   c:0, just:"Usabilidade e ciclo de vida antes de micro serviços."},
+  // Q17
+  {q:"Antes de iniciar a codificação de um aplicativo, qual ação é mais adequada para estruturar o projeto?",
+   a:["Realizar uma reunião inicial, definir objetivos e estabelecer um cronograma.",
+      "Começar imediatamente a codificação para ganhar tempo.",
+      "Designar apenas um desenvolvedor para todo o projeto.",
+      "Permitir que a equipe trabalhe sem objetivos ou marcos definidos."],
+   c:0, just:"Reunião inicial + objetivos + cronograma."},
+  // Q18
+  {q:"Ao criar o layout inicial de um aplicativo de atividades físicas, qual abordagem é mais adequada?",
+   a:["Utilizar muitas cores vibrantes para destacar as informações.",
+      "Exibir o máximo possível de informações na tela inicial.",
+      "Realizar testes de usabilidade e ajustar o layout com base no feedback dos usuários.",
+      "Criar um design único e diferenciado, mesmo que isso aumente significativamente o tempo de desenvolvimento."],
+   c:2, just:"Testes de usabilidade com feedback."},
+  // Q19
+  {q:"Para ensinar a construção de layouts utilizando o Editor de blocos, qual abordagem é mais eficaz?",
+   a:["Concentrar-se exclusivamente na teoria do design.",
+      "Concentrar-se exclusivamente na prática do Editor de blocos.",
+      "Combinar princípios teóricos de design com aplicação prática no Editor de blocos.",
+      "Concentrar-se em animações e interatividade avançadas."],
+   c:2, just:"Teoria + prática no Editor de blocos."},
+  // Q20
+  {q:"Para desenvolver um aplicativo de lista de tarefas utilizando o Editor de blocos, qual abordagem é mais adequada?",
+   a:["Priorizar estética avançada, mesmo comprometendo a usabilidade.",
+      "Criar um layout básico, sem preocupação com aspectos estéticos.",
+      "Equilibrar estética e funcionalidade, criando um layout intuitivo e fácil de navegar.",
+      "Utilizar uma interface predominantemente textual e baseada em comandos."],
+   c:2, just:"Equilíbrio estética + funcionalidade."},
+  // Q21
+  {q:"Qual abordagem é mais eficaz para ensinar construção de layouts para aplicativos móveis?",
+   a:["Ensinar exclusivamente a teoria do design de interfaces.",
+      "Ensinar exclusivamente a utilização prática do Editor de blocos.",
+      "Combinar teoria e prática, aplicando princípios de design no Editor de blocos.",
+      "Ensinar principalmente animações e gráficos interativos avançados."],
+   c:2, just:"Teoria + prática balanceadas."},
+  // Q22
+  {q:"Para um módulo sobre outras tecnologias e linguagens para desenvolvimento de aplicativos, qual abordagem é mais eficaz?",
+   a:["Concentrar o curso em uma única linguagem avançada.",
+      "Oferecer mini-cursos independentes sobre diferentes tecnologias e linguagens.",
+      "Integrar teoria e prática, ensinando a selecionar e integrar diferentes tecnologias e linguagens em um projeto.",
+      "Concentrar-se exclusivamente em frameworks cross-platform."],
+   c:2, just:"Treinamento integrado teoria + prática."},
+  // Q23
+  {q:"Para desenvolver um aplicativo guia de viagens utilizando o Editor de blocos, qual abordagem é mais adequada?",
+   a:["Priorizar gráficos avançados, mesmo tornando a navegação mais complexa.",
+      "Criar um layout simples, sem preocupação com aspectos visuais.",
+      "Equilibrar design e funcionalidade, criando uma interface atraente, intuitiva e interativa.",
+      "Utilizar uma interface predominantemente textual."],
+   c:2, just:"Equilíbrio design + funcionalidade."},
+  // Q24
+  {q:"Para ensinar bancos de dados em aplicativos móveis, qual abordagem é mais adequada?",
+   a:["Ensinar exclusivamente bancos de dados relacionais.",
+      "Abordar bancos relacionais e não relacionais, utilizando exemplos práticos e diferentes cenários.",
+      "Ensinar exclusivamente bancos de dados não relacionais.",
+      "Trabalhar apenas conceitos teóricos, sem exemplos práticos."],
+   c:1, just:"Relacionais + não relacionais com exemplos."},
+  // Q25
+  {q:"Para ensinar tecnologias como React Native e Flutter, além da integração com APIs, qual abordagem é mais eficaz?",
+   a:["Concentrar-se em uma única linguagem e framework.",
+      "Realizar workshops práticos com diferentes frameworks e APIs, permitindo comparar suas aplicações.",
+      "Trabalhar exclusivamente os conceitos teóricos das tecnologias.",
+      "Integrar o conteúdo apenas a plataformas comerciais de desenvolvimento."],
+   c:1, just:"Workshops práticos com frameworks e APIs."},
+  // Q26
+  {q:"Para desenvolver um aplicativo simples de diário pessoal e familiarizar-se com um ambiente mobile, qual abordagem é mais adequada?",
+   a:["Utilizar bibliotecas sofisticadas para implementar recursos avançados.",
+      "Utilizar um ambiente simplificado e aprender seus componentes e ferramentas básicas.",
+      "Concentrar-se exclusivamente no design gráfico.",
+      "Desenvolver somente por linha de comando, sem utilizar um ambiente específico."],
+   c:1, just:"Ambiente simplificado + ferramentas básicas."},
+  // Q27
+  {q:"Para um primeiro aplicativo simples, como um cronômetro ou calculadora, qual abordagem é mais adequada?",
+   a:["Utilizar recursos avançados de design e programação.",
+      "Utilizar um ambiente simplificado e desenvolver uma funcionalidade clara, priorizando interface e funcionamento.",
+      "Concentrar-se principalmente no aspecto visual.",
+      "Utilizar desde o início uma plataforma de programação mais desafiadora."],
+   c:1, just:"Ambiente simplificado + uma funcionalidade clara."}
+];
+
+const letras = ["A","B","C","D"];
+const listaDiv = document.getElementById("listaQuestoes");
+const listaGab = document.getElementById("listaGabarito");
+const progresso = document.getElementById("progresso");
+let respostas = new Array(questoes.length).fill(null);
+
+questoes.forEach((q,i)=>{
+  const div = document.createElement("div");
+  div.className = "questao";
+  div.innerHTML = `<p class="enunciado"><span class="tag">Q${i+1}</span>${q.q}</p>`;
+  const alts = document.createElement("div");
+  alts.className = "alternativas";
+  q.a.forEach((alt,j)=>{
+    const label = document.createElement("label");
+    label.innerHTML = `<input type="radio" name="q${i}" value="${j}"> <strong>${letras[j]})</strong> ${alt}`;
+    alts.appendChild(label);
+  });
+  div.appendChild(alts);
+  const res = document.createElement("div");
+  res.className = "resultado";
+  res.id = `res${i}`;
+  div.appendChild(res);
+  listaDiv.appendChild(div);
+});
+
+document.querySelectorAll('input[type=radio]').forEach(inp=>{
+  inp.addEventListener('change',e=>{
+    const idx = parseInt(e.target.name.replace('q',''));
+    respostas[idx] = parseInt(e.target.value);
+    atualizarProgresso();
+  });
+});
+
+function atualizarProgresso(){
+  const total = respostas.filter(r=>r!==null).length;
+  progresso.textContent = `Respondidas: ${total} / ${questoes.length}`;
+}
+
+questoes.forEach((q,i)=>{
+  const li = document.createElement("li");
+  li.innerHTML = `<strong>Q${i+1}:</strong> ${letras[q.c]}
+    <div class="explica">${q.just}</div>`;
+  listaGab.appendChild(li);
+});
+
+document.getElementById("btnGabarito").addEventListener("click",()=>{
+  const gab = document.getElementById("gabarito");
+  gab.classList.add("show");
+  questoes.forEach((q,i)=>{
+    const res = document.getElementById(`res${i}`);
+    if(respostas[i]===null){
+      res.textContent = "⚠ Não respondida";
+      res.className = "resultado erro";
+    } else if(respostas[i]===q.c){
+      res.textContent = "✔ Correto";
+      res.className = "resultado ok";
+    } else {
+      res.textContent = `✘ Incorreto — correta: ${letras[q.c]}`;
+      res.className = "resultado erro";
+    }
+  });
+  gab.scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById("btnLimpar").addEventListener("click",()=>{
+  document.querySelectorAll('input[type=radio]').forEach(i=>i.checked=false);
+  respostas = new Array(questoes.length).fill(null);
+  document.querySelectorAll('.resultado').forEach(r=>{r.textContent="";r.className="resultado";});
+  document.getElementById("gabarito").classList.remove("show");
+  atualizarProgresso();
+});
+</script>
+
+</body></html>
